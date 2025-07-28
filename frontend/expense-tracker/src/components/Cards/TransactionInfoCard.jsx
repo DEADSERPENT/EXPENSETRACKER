@@ -1,7 +1,7 @@
 import React from 'react'
 import { LuUtensils, LuTrendingUp, LuTrendingDown, LuTrash2, } from 'react-icons/lu'
 
-const TransitionInfoCard = ({ title, icon, date, amount, type, hideDeleteBtn }) => {
+const TransactionInfoCard = ({ title, icon, date, amount, type, hideDeleteBtn }) => {
   const getAmountStyles = () => {
     return type === "income" ? "bg-green-50 text-green-500" : "bg-red-50 text-red-500";
   }; 
@@ -42,4 +42,4 @@ const TransitionInfoCard = ({ title, icon, date, amount, type, hideDeleteBtn }) 
   );
 };
 
-export default TransitionInfoCard
+export default TransactionInfoCard

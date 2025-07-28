@@ -17,14 +17,26 @@ export const getInitials = (name) => {
 };
 
 export const addThousandsSeparator = (num) => {
-  if (num == null || isNaN(num)) return "";
+  const safeNum = Number(num);
+  if (isNaN(safeNum)) return "0";
 
-  const [integerPart, fractionalPart] = num.toString().split(".");
+  const [integerPart, fractionalPart] = safeNum.toString().split(".");
   const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   return fractionalPart
     ? `${formattedInteger}.${fractionalPart}`
     : formattedInteger;
+};
+
+export const formatCurrency = (amount = 0) => {
+  const safeNum = Number(amount);
+  if (isNaN(safeNum)) return "₹0";
+  
+  return new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    maximumFractionDigits: 2,
+  }).format(safeNum);
 };
 
 export const prepareExpenseBarChartData = (data = []) => {
